@@ -1,6 +1,6 @@
 #' @export
-close_short_put_exp <- function(date, exp, p_strike, credit) {
-  closes <- options %>%
+close_short_put_exp <- function(df, date, exp, p_strike, credit) {
+  closes <- df %>%
     dplyr::filter(expiration == exp, quotedate == exp,
                   strike == p_strike & type == "put") %>%
     dplyr::group_by(quotedate) %>%
