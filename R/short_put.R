@@ -13,8 +13,6 @@ open_short_put <- function(data, stock, tar_delta_put) {
                   mid_put = mid,
                   type_put = type) %>%
     dplyr::select(quotedate, type_put, expiration, strike_put, delta_put, dte, mid_put)
-
-  return(short_put_opens)
 }
 
 

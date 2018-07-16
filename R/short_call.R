@@ -13,6 +13,4 @@ open_short_call <- function(data, stock, tar_delta_call) {
                   mid_call = mid,
                   type_call = type) %>%
     dplyr::select(quotedate, type_call, expiration, strike_call, delta_call, dte, mid_call)
-
-  return(short_call_opens)
 }
