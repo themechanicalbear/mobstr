@@ -1,5 +1,5 @@
 #' @export
-open_short_call <- function(data, stock, tar_delta_call) {
+open_short_call <- function(data, tar_delta_call) {
   short_call_opens <- data %>%
     dplyr::filter(type == "call") %>%
     dplyr::mutate(m_delta = abs(delta - tar_delta_call)) %>%

@@ -1,5 +1,5 @@
 #' @export
-open_short_put <- function(data, stock, tar_delta_put) {
+open_short_put <- function(data, tar_delta_put) {
   short_put_opens <- data %>%
     dplyr::filter(type == "put") %>%
     dplyr::mutate(m_delta = abs(delta - tar_delta_put)) %>%
