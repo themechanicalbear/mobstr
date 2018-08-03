@@ -18,6 +18,7 @@
 .Rproj.user/
 *.Rproj
 .Rproj.user
+.Rprofile
 
 # produced vignettes
 # vignettes/*.html
