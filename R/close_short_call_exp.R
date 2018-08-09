@@ -1,6 +1,6 @@
 #' @export
 close_short_call_exp <- function(df, date, exp, c_strike, credit) {
-  closes <- df %>%
+  df %>%
     dplyr::filter(expiration == exp, quotedate == exp,
                   strike == c_strike & type == "call") %>%
     dplyr::group_by(quotedate) %>%
