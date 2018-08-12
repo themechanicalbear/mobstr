@@ -1,24 +1,26 @@
 #' @export
-close_short_exp <- function(df, date, exp, typ, stk, credit) {
-  c <- paste0(typ, "_credit")
-  d <- paste0(typ, "_debit")
-  p <- paste0(typ, "_profit")
+close_short_exp <- function(df, date, exp, typ, stk, credit, dlt, stk_price) {
+  o_credit <- paste0(typ, "_credit")
+  o_debit <- paste0(typ, "_debit")
+  prof <- paste0(typ, "_profit")
+  o_delta <- paste0(typ, "_delta")
 
   df %>%
     dplyr::filter(expiration == exp, quotedate == exp,
                   strike == stk & type == typ) %>%
     dplyr::group_by(quotedate) %>%
-    dplyr::mutate(open_credit = credit,
-                  debit = sum(mid, na.rm = TRUE),
-                  profit = open_credit - debit) %>%
+    dplyr::mutate(debit = sum(mid, na.rm = TRUE),
+                  profit = credit - debit) %>%
     dplyr::ungroup() %>%
     dplyr::distinct() %>%
     dplyr::mutate(open_date = as.Date(date, origin = "1970-01-01"),
                   quotedate = as.Date(quotedate, origin = "1970-01-01"),
                   expiration = as.Date(expiration, origin = "1970-01-01"),
-                  !!c := open_credit,
-                  !!d := debit,
-                  !!p := profit) %>%
-    dplyr::select(symbol, quotedate, expiration, open_date,
-                  !!c, !!d, !!p)
+                  open_stock_price = stk_price,
+                  !!o_credit := credit,
+                  !!o_debit := debit,
+                  !!prof := profit,
+                  !!o_delta := dlt) %>%
+    dplyr::select(symbol, quotedate, expiration, open_date, open_stock_price,
+                  !!o_delta, !!o_credit, !!o_debit, !!prof)
 }
