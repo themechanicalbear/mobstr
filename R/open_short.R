@@ -18,7 +18,7 @@ open_short <- function(data, tar_delta, put_call) {
                   !!ds := delta_strike,
                   !!oc := mid,
                   quotedate = as.Date(quotedate, origin = "1970-01-01"),
-                  expiration = as.Date(expiration, origin = "1970-01-01")) %>%
-    dplyr::select(symbol, quotedate, !!tp, expiration, !!s, !!ds, dte, !!oc)
+                  expiration = as.Date(expiration, origin = "1970-01-01")) #%>%
+    #dplyr::select(symbol, quotedate, !!tp, expiration, !!s, !!ds, dte, !!oc)
 }
 
