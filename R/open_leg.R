@@ -36,7 +36,7 @@ open_leg <- function(data, put_call, direction, tar_delta, tar_buffer) {
   om  <- paste0(put_call, "_open_", direction)
 
   if (!is.na(tar_delta)) {
-    data %>%
+    trades <- data %>%
       filter(type == put_call) %>%
       mutate(abs_delta = abs(delta_strike - tar_delta)) %>%
       group_by(quotedate) %>%
@@ -53,7 +53,7 @@ open_leg <- function(data, put_call, direction, tar_delta, tar_buffer) {
   }
 
   if (!is.na(tar_buffer)) {
-    data %>%
+    trades <- data %>%
       filter(type == put_call) %>%
       filter(strike < close_price) %>%
       group_by(quotedate) %>%
@@ -70,4 +70,5 @@ open_leg <- function(data, put_call, direction, tar_delta, tar_buffer) {
              quotedate = as.Date(quotedate, origin = org),
              expiration = as.Date(expiration, origin = org))
   }
+  trades
 }
