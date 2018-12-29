@@ -14,21 +14,8 @@
 #'
 #' @return dataframe of dates when position was open including stock symbol and margin
 #'
-#' head(margin_use("SPY", "2018-01-01", "2018-02-16", 2135))
-#' symbol entry_date  exit_date margin
-#' SPY 2018-01-01 2018-02-16   2135
-#' SPY 2018-01-02 2018-02-16   2135
-#' SPY 2018-01-03 2018-02-16   2135
-#' SPY 2018-01-04 2018-02-16   2135
-#' SPY 2018-01-05 2018-02-16   2135
-#' SPY 2018-01-06 2018-02-16   2135
-#'
 #' @export
 #'
-#' @examples
-#' margin_use("SPY", "2018-01-01", "2018-02-16", 2135)
-#'
-#' Function ----
 margin_use <- function(sy, st, en, marg) {
   data.frame(
     symbol = sy,

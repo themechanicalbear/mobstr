@@ -10,15 +10,11 @@
 #' @param var variable name to create lags of
 #' @param n number of lags to create
 #'
-#' @export
 #'
 #' @return A vector to include in a call to mutate in dplyr chain
 #'
-#' @examples
+#' @export
 #'
-#'
-# Function lags----
-# https://purrple.cat/blog/2018/03/02/multiple-lags-with-tidy-evaluation/
 lags <- function(var, n = 10){
   var <- enquo(var)
 

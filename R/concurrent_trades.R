@@ -1,4 +1,4 @@
-#' Calculate # concurrent trades for each day
+#' Calculate number of concurrent trades for each day
 #'
 #' @description{
 #' Number of trades open on any given day can be used to calculate when multiple
@@ -13,21 +13,8 @@
 #'
 #' @return dataframe of dates when position was open including stock symbol
 #'
-#' head(concurrent_trades("SPY", "2018-01-01", "2018-02-16"))
-#' symbol quote_date  exit_date
-#' SPY 2018-01-01 2018-02-16
-#' SPY 2018-01-02 2018-02-16
-#' SPY 2018-01-03 2018-02-16
-#' SPY 2018-01-04 2018-02-16
-#' SPY 2018-01-05 2018-02-16
-#' SPY 2018-01-06 2018-02-16
-#'
 #' @export
 #'
-#' @examples
-#' concurrent_trades("SPY", "2018-01-01", "2018-02-16")
-#'
-#' Function ----
 concurrent_trades <- function(sy, st, en) {
   data.frame(
     symbol = sy,

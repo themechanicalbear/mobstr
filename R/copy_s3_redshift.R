@@ -22,14 +22,8 @@
 #'
 #' @export
 #'
-#'
 #' @return return TRUE if successful
 #'
-#' @examples
-#' tastytrade::copy_S3_redshift(rs_conn, stock, paste0("s3://", stock, "-options/"))
-#'
-#'
-# Function ----
 copy_S3_redshift <-
   function(env, connection, table_name, bucket_path,
            credentials = Sys.getenv(paste0(env, "_REDSHIFT_IAM_ROLE")),

@@ -16,13 +16,9 @@
 #'
 #' @param env variable used to create paths for various systems on AWS
 #'
+#'
 #' @export
 #'
-#' @examples
-#' redshift_connect("TASTYTRADE")
-#'
-#'
-# Function ----
 redshift_connect <- function(env) {
   rs_driver <- RJDBC::JDBC(Sys.getenv("REDSHIFT_DRIVER"),
                            Sys.getenv("REDSHIFT_DRIVER_FILE"),

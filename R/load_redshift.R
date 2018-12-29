@@ -1,4 +1,13 @@
+#' Load options data into AWS redshift
+#'
+#' @description{
+#' Load options data into redshift table
+#' }
+#'
+#' @param stock string representing the stock symbol
+#'
 #' @export
+#'
 load_redshift <- function(stock) {
   rs_conn <- tastytrade::redshift_connect("TASTYTRADE")
 
