@@ -2,7 +2,8 @@
 % Please edit documentation in R/open_leg.R
 \name{open_leg}
 \alias{open_leg}
-\title{Open single leg options trade}
+\title{TODO resolve method to use max strike for shorts and min strike for calls
+Open single leg options trade}
 \usage{
 open_leg(data, put_call, direction, tar_delta, tar_buffer)
 }
@@ -26,10 +27,4 @@ analysis.
 Using function inputs for options type, direction, target delta, and buffer
 open a single option leg trade
 }
-}
-\examples{
-open_leg(data = options, put_call = "put", direction = "credit",
-         tar_delta = -0.16, tar_buffer = 0.10)
-
-
 }

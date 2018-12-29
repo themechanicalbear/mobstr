@@ -19,7 +19,3 @@ A vector to include in a call to mutate in dplyr chain
 Various utility functions for use with the tastytrade package
 }
 }
-\examples{
-
-
-}

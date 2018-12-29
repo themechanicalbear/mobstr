@@ -22,8 +22,3 @@ download.file('http://s3.amazonaws.com/redshift-downloads/drivers/RedshiftJDBC41
 Install commandline tools for MAC after updating the OS
 https://developer.apple.com/download/more/
 }
-\examples{
-redshift_connect("TASTYTRADE")
-
-
-}

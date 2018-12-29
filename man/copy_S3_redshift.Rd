@@ -45,8 +45,3 @@ Using function inputs for JDBC connection, redshift table name, and bucket
 path, perform copy/insert to redshift
 }
 }
-\examples{
-tastytrade::copy_S3_redshift(rs_conn, stock, paste0("s3://", stock, "-options/"))
-
-
-}

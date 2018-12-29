@@ -2,7 +2,7 @@
 % Please edit documentation in R/concurrent_trades.R
 \name{concurrent_trades}
 \alias{concurrent_trades}
-\title{Calculate # concurrent trades for each day}
+\title{Calculate number of concurrent trades for each day}
 \usage{
 concurrent_trades(sy, st, en)
 }
@@ -15,24 +15,10 @@ concurrent_trades(sy, st, en)
 }
 \value{
 dataframe of dates when position was open including stock symbol
-
-head(concurrent_trades("SPY", "2018-01-01", "2018-02-16"))
-symbol quote_date  exit_date
-SPY 2018-01-01 2018-02-16
-SPY 2018-01-02 2018-02-16
-SPY 2018-01-03 2018-02-16
-SPY 2018-01-04 2018-02-16
-SPY 2018-01-05 2018-02-16
-SPY 2018-01-06 2018-02-16
 }
 \description{
 {
 Number of trades open on any given day can be used to calculate when multiple
 entries would cause more capital allocated to a strategy by symbol than desired
 }
-}
-\examples{
-concurrent_trades("SPY", "2018-01-01", "2018-02-16")
-
-Function ----
 }

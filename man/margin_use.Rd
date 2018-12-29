@@ -17,24 +17,10 @@ margin_use(sy, st, en, marg)
 }
 \value{
 dataframe of dates when position was open including stock symbol and margin
-
-head(margin_use("SPY", "2018-01-01", "2018-02-16", 2135))
-symbol entry_date  exit_date margin
-SPY 2018-01-01 2018-02-16   2135
-SPY 2018-01-02 2018-02-16   2135
-SPY 2018-01-03 2018-02-16   2135
-SPY 2018-01-04 2018-02-16   2135
-SPY 2018-01-05 2018-02-16   2135
-SPY 2018-01-06 2018-02-16   2135
 }
 \description{
 {
 Calculate the amount of margin in use each day during the study. Can be used
 as a decision point on if new positions can be opened
 }
-}
-\examples{
-margin_use("SPY", "2018-01-01", "2018-02-16", 2135)
-
-Function ----
 }

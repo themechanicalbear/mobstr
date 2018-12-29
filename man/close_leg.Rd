@@ -36,7 +36,3 @@ expiration
 Using function inputs from opened trades close each day until expiration
 }
 }
-\examples{
-
-
-}

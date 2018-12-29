@@ -18,7 +18,3 @@ Take processed RDS stock options file and convert to CSV then put to AWS S3
 bucket
 }
 }
-\examples{
-walk(watch_list$Symbol, tastytrade::write_2_S3)
-
-}
