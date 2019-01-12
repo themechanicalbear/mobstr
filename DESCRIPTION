@@ -23,7 +23,9 @@ Imports:
     lubridate,
     purrr,
     rlang,
-    knitr
+    knitr,
+    data.table, 
+    readr
 VignetteBuilder: knitr
 Suggests: 
 RoxygenNote: 6.1.1
