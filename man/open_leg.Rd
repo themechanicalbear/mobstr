@@ -5,10 +5,12 @@
 \title{TODO resolve method to use max strike for shorts and min strike for calls
 Open single leg options trade}
 \usage{
-open_leg(data, put_call, direction, tar_delta, tar_buffer)
+open_leg(conn, stock, put_call, direction, tar_delta, tar_dte)
 }
 \arguments{
-\item{data}{table from redshift not yet collected}
+\item{conn}{AWS Athena connection}
+
+\item{stock}{character string of stock symbol}
 
 \item{put_call}{is this a put or call option we are opening?}
 
@@ -16,7 +18,7 @@ open_leg(data, put_call, direction, tar_delta, tar_buffer)
 
 \item{tar_delta}{target delta for the option}
 
-\item{tar_buffer}{percent the strike should be away from ATM}
+\item{tar_dte}{target number of days to expiration at entry}
 }
 \value{
 A dataframe of filtered opening option trades to be used in further
