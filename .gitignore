@@ -42,3 +42,6 @@ tests/testthat/*
 
 # Deprecated code
 deprecated/*
+
+# Data files
+data/*
