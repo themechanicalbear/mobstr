@@ -23,6 +23,10 @@
 #' analysis.
 #'
 
+if (getRversion() >= "2.15.1") {
+  utils::globalVariables(c("type", "delta", "dte", "quotedate", "m_dte", "abs_delta", "strike", "mid"))
+}
+
 open_leg <- function(conn, stock, put_call, direction, tar_delta, tar_dte) {
   tp  <- paste0(put_call, "_type")
   s   <- paste0(put_call, "_strike")
