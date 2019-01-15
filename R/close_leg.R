@@ -25,10 +25,6 @@
 #' @export
 #'
 
-if (getRversion() >= "2.15.1") {
-  utils::globalVariables(c("expiration", "exit_mid", "profit", "symbol", "entry_stock_price"))
-}
-
 close_leg <- function(df, entry_date, exp, typ, stk,
                       entry_mid, entry_delta, stk_price, direction) {
   org <- "1970-01-01"
