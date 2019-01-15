@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 deprecated/*
 inst/*
+inst/extscripts/historical_options_data_processing.R
