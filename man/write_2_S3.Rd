@@ -4,17 +4,20 @@
 \alias{write_2_S3}
 \title{Write to AWS S3}
 \usage{
-write_2_S3(stock)
+write_2_S3(stock, path, bucket)
 }
 \arguments{
 \item{stock}{character string of the stock we want to put to S3}
+
+\item{path}{character string of local file path to upload}
+
+\item{bucket}{character string of the name for the root AWS S3 bucket}
 }
 \value{
 TRUE when successful copy is made
 }
 \description{
 {
-Take processed RDS stock options file and convert to CSV then put to AWS S3
-bucket
+Take processed csv stock options file put to AWS S3 bucket
 }
 }

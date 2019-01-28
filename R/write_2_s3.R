@@ -1,8 +1,7 @@
 #' Write to AWS S3
 #'
 #' @description{
-#' Take processed RDS stock options file and convert to CSV then put to AWS S3
-#' bucket
+#' Take processed csv stock options file put to AWS S3 bucket
 #' }
 #'
 #' @importFrom dplyr mutate
@@ -13,47 +12,46 @@
 #' @importFrom readr write_csv
 #'
 #' @param stock character string of the stock we want to put to S3
+#' @param path character string of local file path to upload
+#' @param bucket character string of the name for the root AWS S3 bucket
 #'
 #' @return TRUE when successful copy is made
 #'
 #' @export
 #'
-# write_2_S3 <- function(stock) {
-#   file_name <- paste0(stock, "_options.csv")
-#   bucket_name <- "rds-options-files"
+
+# write_2_S3 <- function(stock, path, bucket) {
+#   file_path <- paste0(path, stock, ".csv")
+#   file_name <- paste0(stock, ".csv")
+#   aws_s3_path <- paste0("s3://", bucket, "/")
+#
+#   df <- data.table::fread(file_path)
+#
+#   bucket_name <- paste0(bucket, "/", stock)
 #   region_name <- Sys.getenv("AWS_S3_REGION")
 #
-#   df <- readRDS(paste0(here(), "/data/options/", stock, ".RDS")) %>%
-#     mutate(mid = (.data$bid + .data$ask) / 2)
+#   aws.s3::put_bucket(bucket_name)
 #
 #   tmp <- tempfile()
 #   on.exit(unlink(tmp))
-#   write.csv(df, file = tmp, row.names = FALSE)
-#   # S3 bucket must already exist at this point
-#   put_object(tmp,
-#              object = file_name,
-#              bucket = bucket_name,
-#              region = region_name)
+#   readr::write_csv(df, path = tmp)
+#
+#   aws.s3::put_object(tmp,
+#                      object = file_name,
+#                      bucket = bucket_name,
+#                      region = region_name)
 # }
 
-
-write_2_S3 <- function(stock) {
-  file_name <- paste0(stock, "_options.csv")
-
-  aws.s3::save_object(paste0("s3://rds-options-files/", stock, "_options.csv"), file = file_name)
-  df <- data.table::fread(file_name)
-
-  bucket_name <- paste0("rds-options-files/", stock)
+write_2_S3 <- function(stock, path, bucket) {
+  file_path <- paste0(path, stock, ".csv")
+  file_name <- paste0(stock, ".csv")
+  bucket_name <- paste0(bucket, "/", stock)
   region_name <- Sys.getenv("AWS_S3_REGION")
 
   aws.s3::put_bucket(bucket_name)
 
-  tmp <- tempfile()
-  on.exit(unlink(tmp))
-  readr::write_csv(df, path = tmp)
-
-  aws.s3::put_object(tmp,
-             object = file_name,
-             bucket = bucket_name,
-             region = region_name)
+  aws.s3::put_object(file = file_path,
+                     object = file_name,
+                     bucket = bucket_name,
+                     region = region_name)
 }
