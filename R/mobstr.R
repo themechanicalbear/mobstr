@@ -1,11 +1,11 @@
-#' \code{tastytrade} package
+#' \code{mobstr} package
 #'
-#' tastrytrade R API
+#' mobstr R API
 #'
 #' See the README on
 #'
 #' @docType package
-#' @name tastytrade
+#' @name mobstr
 #' @importFrom dplyr filter group_by mutate ungroup distinct arrange select n
 #' @import rlang
 #' @importFrom RJDBC JDBC

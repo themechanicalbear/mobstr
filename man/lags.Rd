@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{lags}
 \alias{lags}
-\title{Short utility functions for the tastytrade package}
+\title{Short utility functions for the mobstr package}
 \usage{
 lags(var, n = 10)
 }
@@ -16,6 +16,6 @@ A vector to include in a call to mutate in dplyr chain
 }
 \description{
 {
-Various utility functions for use with the tastytrade package
+Various utility functions for use with the mobstr package
 }
 }

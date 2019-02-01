@@ -1,4 +1,4 @@
-Package: tastytrade
+Package: mobstr
 Type: Package
 Title: A collection of r functions for options trading analysis
 Version: 0.1.0
@@ -8,7 +8,7 @@ Authors@R: c(
 Maintainer: The package maintainer <jason@themechanicalbear.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-BugReports: https://github.com/themechanicalbear/tastytrade/issues
+BugReports: https://github.com/themechanicalbear/mobstr/issues
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true

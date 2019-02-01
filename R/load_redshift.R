@@ -9,7 +9,7 @@
 #' @export
 #'
 load_redshift <- function(stock) {
-  rs_conn <- tastytrade::redshift_connect("TASTYTRADE")
+  rs_conn <- mobstr::redshift_connect("mobstr")
 
   if (!RJDBC::dbExistsTable(rs_conn, stock)) {
     RJDBC::dbSendUpdate(rs_conn,
@@ -48,9 +48,9 @@ load_redshift <- function(stock) {
       distkey (symbol)
       sortkey (symbol, quotedate);"))
   }
-  tastytrade::truncate_redshift(rs_conn, stock)
+  mobstr::truncate_redshift(rs_conn, stock)
   # Use Manage IAM roles on cluster to add the redshift role prior to copy
-  tastytrade::copy_S3_redshift(env = "TASTYTRADE", connection = rs_conn,
+  mobstr::copy_S3_redshift(env = "mobstr", connection = rs_conn,
                                table_name = stock,
                                bucket_path = paste0("s3://rds-options-files/", stock, "_options.csv"))
 }

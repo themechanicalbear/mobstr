@@ -1,7 +1,7 @@
-#' Short utility functions for the tastytrade package
+#' Short utility functions for the mobstr package
 #'
 #' @description{
-#' Various utility functions for use with the tastytrade package
+#' Various utility functions for use with the mobstr package
 #' }
 #'
 #' @importFrom purrr map
