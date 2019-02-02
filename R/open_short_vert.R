@@ -30,6 +30,5 @@ open_short_vert <- function(data, tar_delta, put_call, width) {
                   !!ds := .data$delta_strike,
                   !!oc := .data$mid,
                   quotedate = as.Date(.data$quotedate, origin = "1970-01-01"),
-                  expiration = as.Date(.data$expiration, origin = "1970-01-01")) #%>%
-  #dplyr::select(symbol, quotedate, !!tp, expiration, !!s, !!ds, dte, !!oc)
+                  expiration = as.Date(.data$expiration, origin = "1970-01-01"))
 }

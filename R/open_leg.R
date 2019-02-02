@@ -30,17 +30,17 @@ open_leg <- function(conn, stock, put_call, direction, tar_delta, tar_dte) {
   om  <- paste0(put_call, "_open_", direction)
 
   conn %>%
-    tbl(stock) %>%
-    filter(type == put_call) %>%
-    mutate(abs_delta = abs(delta - tar_delta),
-           m_dte = abs(dte - tar_dte)) %>%
-    group_by(quotedate) %>%
-    filter(m_dte == min(m_dte, na.rm = TRUE)) %>%
-    filter(abs_delta == min(abs_delta, na.rm = TRUE)) %>%
-    ungroup() %>%
-    collect() %>%
-    mutate(!!tp := type,
-           !!s := strike,
-           !!ds := delta,
-           !!om := mid)
+    dplyr::tbl(stock) %>%
+    dplyr::filter(type == put_call) %>%
+    dplyr::mutate(abs_delta = abs(delta - tar_delta),
+                  m_dte = abs(dte - tar_dte)) %>%
+    dplyr::group_by(quotedate) %>%
+    dplyr::filter(m_dte == min(m_dte, na.rm = TRUE)) %>%
+    dplyr::filter(abs_delta == min(abs_delta, na.rm = TRUE)) %>%
+    dplyr::ungroup() %>%
+    dplyr::collect() %>%
+    dplyr::mutate(!!tp := type,
+                  !!s := strike,
+                  !!ds := delta,
+                  !!om := mid)
 }

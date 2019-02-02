@@ -18,7 +18,7 @@
 concurrent_trades <- function(sy, st, en) {
   data.frame(
     symbol = sy,
-    quote_date = seq(ymd(st), ymd(en), by = "day"),
-    exit_date = ymd(en)
+    quote_date = seq(lubridate::ymd(st), lubridate::ymd(en), by = "day"),
+    exit_date = lubridate::ymd(en)
   )
 }

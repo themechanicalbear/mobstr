@@ -19,8 +19,8 @@
 margin_use <- function(sy, st, en, marg) {
   data.frame(
     symbol = sy,
-    entry_date = seq(ymd(st), ymd(en), by = "day"),
-    exit_date = ymd(en),
+    entry_date = seq(lubridate::ymd(st), lubridate::ymd(en), by = "day"),
+    exit_date = lubridate::ymd(en),
     margin = marg
   )
 }

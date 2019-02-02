@@ -20,28 +20,6 @@
 #' @export
 #'
 
-# write_2_S3 <- function(stock, path, bucket) {
-#   file_path <- paste0(path, stock, ".csv")
-#   file_name <- paste0(stock, ".csv")
-#   aws_s3_path <- paste0("s3://", bucket, "/")
-#
-#   df <- data.table::fread(file_path)
-#
-#   bucket_name <- paste0(bucket, "/", stock)
-#   region_name <- Sys.getenv("AWS_S3_REGION")
-#
-#   aws.s3::put_bucket(bucket_name)
-#
-#   tmp <- tempfile()
-#   on.exit(unlink(tmp))
-#   readr::write_csv(df, path = tmp)
-#
-#   aws.s3::put_object(tmp,
-#                      object = file_name,
-#                      bucket = bucket_name,
-#                      region = region_name)
-# }
-
 write_2_S3 <- function(stock, path, bucket) {
   file_path <- paste0(path, stock, ".csv")
   file_name <- paste0(stock, ".csv")

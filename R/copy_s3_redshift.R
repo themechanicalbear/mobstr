@@ -35,11 +35,11 @@ copy_S3_redshift <-
            null = "NA",
            file_format = "csv") {
 
-    dbSendUpdate(connection,
-                 paste0("COPY ", table_name, " FROM '", bucket_path,
-                        "'credentials '", credentials, ":role/", role,
-                        "' delimiter '", delimiter, "' region '",
-                        region, "' IGNOREHEADER ", ignore_header,
-                        " dateformat '", dateformat, "' NULL '", null,
-                        "' ", file_format, ";"))
+    RJDBC::dbSendUpdate(connection,
+                        paste0("COPY ", table_name, " FROM '", bucket_path,
+                               "'credentials '", credentials, ":role/", role,
+                               "' delimiter '", delimiter, "' region '",
+                               region, "' IGNOREHEADER ", ignore_header,
+                               " dateformat '", dateformat, "' NULL '", null,
+                               "' ", file_format, ";"))
   }

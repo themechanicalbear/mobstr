@@ -19,7 +19,7 @@ lags <- function(var, n = 10){
   var <- enquo(var)
 
   indices <- seq_len(n)
-  map(indices, ~quo(lag(!!var, !!.x))) %>%
-    set_names(sprintf("lag_%s_%02d", quo_text(var), indices))
+  purrr::map(indices, ~quo(lag(!!var, !!.x))) %>%
+    rlang::set_names(sprintf("lag_%s_%02d", quo_text(var), indices))
 }
 

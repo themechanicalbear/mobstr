@@ -7,6 +7,7 @@
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom dplyr case_when
 #'
 #' @param df dataframe of opened options legs
 #' @param entry_date date position was opened
@@ -34,21 +35,21 @@ close_leg <- function(df, entry_date, exp, typ, stk,
   tdel <- paste0(typ, "_entry_delta")
 
   df %>%
-    filter(expiration == exp,
-           quotedate > entry_date,
-           strike == stk,
-           type == typ) %>%
-    mutate(direction = direction) %>%
-    mutate(exit_mid = case_when(direction == "short" ~ mid,
-                                TRUE ~ -mid),
-           profit = entry_mid - exit_mid,
-           entry_date = as.Date(entry_date, origin = org),
-           entry_stock_price = stk_price,
-           !!tentm := entry_mid,
-           !!textm := exit_mid,
-           !!tpro := profit,
-           !!tdel := entry_delta) %>%
-    select(symbol, quotedate, expiration, entry_date,
-           entry_stock_price, !!tdel, !!tentm, !!textm, !!tpro)
+    dplyr::filter(expiration == exp,
+                  quotedate > entry_date,
+                  strike == stk,
+                  type == typ) %>%
+    dplyr::mutate(direction = direction) %>%
+    dplyr::mutate(exit_mid = dplyr::case_when(direction == "short" ~ mid,
+                                              TRUE ~ -mid),
+                  profit = entry_mid - exit_mid,
+                  entry_date = as.Date(entry_date, origin = org),
+                  entry_stock_price = stk_price,
+                  !!tentm := entry_mid,
+                  !!textm := exit_mid,
+                  !!tpro := profit,
+                  !!tdel := entry_delta) %>%
+    dplyr::select(symbol, quotedate, expiration, entry_date,
+                  entry_stock_price, !!tdel, !!tentm, !!textm, !!tpro)
 }
 
