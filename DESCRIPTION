@@ -1,13 +1,15 @@
 Package: mobstr
 Type: Package
-Title: A collection of r functions for options trading analysis
+Title: A collection of R functions for options trading analysis
 Version: 0.1.0
 Authors@R: c(
     person("Jason", "Taylor", , "jason@themechanicalbear.com", c("aut", "cre"))
     )
 Maintainer: The package maintainer <jason@themechanicalbear.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: mobstr (Mechanical Options Backtesting Strategies w/ Tidy R)
+    Collection of R functions for backtesting options trading strategies including short put, short vertical,
+    iron condor, and others. With functions to calculate portfolio details like margin in use, concurrent positions
+    earnings trades, contango, and modules for shiny.
 BugReports: https://github.com/themechanicalbear/mobstr/issues
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
