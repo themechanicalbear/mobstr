@@ -40,8 +40,8 @@ close_leg <- function(df, entry_date, exp, typ, stk,
                   strike == stk,
                   type == typ) %>%
     dplyr::mutate(direction = direction) %>%
-    dplyr::mutate(exit_mid = dplyr::case_when(direction == "short" ~ mid,
-                                              TRUE ~ -mid),
+    dplyr::mutate(exit_mid = dplyr::case_when(direction == "short" ~ (bid + ask) / 2,
+                                              TRUE ~ -(bid + ask) / 2),
                   profit = entry_mid - exit_mid,
                   entry_date = as.Date(entry_date, origin = org),
                   entry_stock_price = stk_price,

@@ -42,5 +42,5 @@ open_leg <- function(conn, stock, put_call, direction, tar_delta, tar_dte) {
     dplyr::mutate(!!tp := type,
                   !!s := strike,
                   !!ds := delta,
-                  !!om := mid)
+                  !!om := (bid + ask) / 2)
 }
