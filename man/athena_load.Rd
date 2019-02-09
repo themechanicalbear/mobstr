@@ -4,14 +4,18 @@
 \alias{athena_load}
 \title{Load data to Amazon Athena}
 \usage{
-athena_load(conn, database, stock)
+athena_load(conn, database, s3_bucket, name, df)
 }
 \arguments{
 \item{conn}{odbc conn created with mobstr::athena_connect}
 
 \item{database}{string representing the database name in AWS Athena}
 
-\item{stock}{string representing the stock symbol to be uploaded to athena}
+\item{s3_bucket}{string representing the AWS S3 bucket name}
+
+\item{name}{string representing the name you want to assign to the table}
+
+\item{df}{dataframe name}
 }
 \description{
 {

@@ -5,55 +5,28 @@
 #' the environment variables loaded with .RProfile
 #' }
 #'
-#' @importFrom DBI dbConnect
+#' @importFrom DBI dbExecute
 #'
 #' @param conn odbc conn created with mobstr::athena_connect
 #' @param database string representing the database name in AWS Athena
-#' @param stock string representing the stock symbol to be uploaded to athena
+#' @param s3_bucket string representing the AWS S3 bucket name
+#' @param name string representing the name you want to assign to the table
+#' @param df dataframe name
+#'
 #'
 #' @export
 #'
 #'
 
-# TODO change the data types for each column
+athena_load <- function(conn, database, s3_bucket, name, df) {
+  table_vars <- paste0("`", names(df), "` ", sapply(df, typeof), ",", collapse = '')
+  table_vars <- sub(",$", "", table_vars)
 
-athena_load <- function(conn, database, stock) {
-  #---sql  create table statement in Athena
-  DBI::dbExecute(conn, paste0("CREATE EXTERNAL TABLE IF NOT EXISTS ", database, ".", stock, " (
-`symbol` string,
-`quotedate` date,
-`calliv` double,
-`putiv` double,
-`meaniv` double,
-`callvol` double,
-`putvol` double,
-`calloi` double,
-`putoi` double,
-`open` double,
-`high` double,
-`low` double,
-`close` double,
-`volume` double,
-`type` string,
-`expiration` date,
-`strike` double,
-`last` double,
-`bid` double,
-`ask` double,
-`option_volume` double,
-`open_interest` double,
-`iv_strike` double,
-`delta` double,
-`gamma` double,
-`theta` double,
-`vega` double,
-`dte` double,
-`exp_type` string
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-WITH SERDEPROPERTIES (
-    'serialization.format' = ',',
-    'field.delim' = ',' )
-LOCATION 's3://mechanicalbear-athena/", stock, "/'
-TBLPROPERTIES ('has_encrypted_data'='false', 'skip.header.line.count'='1');"))
+  # SQL create table statement in Athena
+  DBI::dbExecute(conn, paste0("CREATE EXTERNAL TABLE IF NOT EXISTS ",
+                              database, ".", name, " (", table_vars, " )",
+                              "ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'",
+                              "WITH SERDEPROPERTIES ('serialization.format' = ',', 'field.delim' = ',' )",
+                              "LOCATION 's3://", s3_bucket, "/", name, "/'",
+                              "TBLPROPERTIES ('has_encrypted_data'='false', 'skip.header.line.count'='1');"))
 }
