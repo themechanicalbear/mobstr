@@ -4,10 +4,10 @@
 \alias{write_2_S3}
 \title{Write to AWS S3}
 \usage{
-write_2_S3(stock, path, bucket)
+write_2_S3(file, path, bucket)
 }
 \arguments{
-\item{stock}{character string of the stock we want to put to S3}
+\item{file}{character string of the file we want to put to S3}
 
 \item{path}{character string of local file path to upload}
 
@@ -18,6 +18,6 @@ TRUE when successful copy is made
 }
 \description{
 {
-Take processed csv stock options file put to AWS S3 bucket
+Take processed csv file options file put to AWS S3 bucket
 }
 }

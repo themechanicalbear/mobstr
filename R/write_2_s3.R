@@ -1,7 +1,7 @@
 #' Write to AWS S3
 #'
 #' @description{
-#' Take processed csv stock options file put to AWS S3 bucket
+#' Take processed csv file options file put to AWS S3 bucket
 #' }
 #'
 #' @importFrom dplyr mutate
@@ -11,7 +11,7 @@
 #' @importFrom data.table fread
 #' @importFrom readr write_csv
 #'
-#' @param stock character string of the stock we want to put to S3
+#' @param file character string of the file we want to put to S3
 #' @param path character string of local file path to upload
 #' @param bucket character string of the name for the root AWS S3 bucket
 #'
@@ -20,10 +20,10 @@
 #' @export
 #'
 
-write_2_S3 <- function(stock, path, bucket) {
-  file_path <- paste0(path, stock, ".csv")
-  file_name <- paste0(stock, ".csv")
-  bucket_name <- paste0(bucket, "/", stock)
+write_2_S3 <- function(file, path, bucket) {
+  file_path <- paste0(path, file, ".csv")
+  file_name <- paste0(file, ".csv")
+  bucket_name <- paste0(bucket, "/", file)
   region_name <- Sys.getenv("AWS_S3_REGION")
 
   aws.s3::put_bucket(bucket_name)
