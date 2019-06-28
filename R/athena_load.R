@@ -20,7 +20,8 @@
 
 athena_load <- function(conn, database, s3_bucket, name, df) {
   table_vars <- paste0("`", names(df), "` ", sapply(df, typeof), ",", collapse = '')
-  table_vars <- sub(",$", "", table_vars)
+  table_vars <- gsub(",$", "", table_vars)
+  table_vars <- gsub("character", "string", table_vars)
 
   # SQL create table statement in Athena
   DBI::dbExecute(conn, paste0("CREATE EXTERNAL TABLE IF NOT EXISTS ",
